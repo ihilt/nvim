@@ -9,10 +9,18 @@ Plug 'mbbill/undotree'
 Plug 'gruvbox-community/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-fugitive'
+Plug 'jremmen/vim-ripgrep'
+"Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
 call plug#end()
 
 colorscheme gruvbox
 set background=dark
+let g:gruvbox_contrast_dark = "hard"
+if exists('+termguicolors')
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
+let g:gruvbox_invert_selection = '0'
 
 set guicursor=
 
@@ -20,6 +28,21 @@ set colorcolumn=80
 
 filetype plugin indent on
 syntax on
+
+set clipboard+=unnamedplus
+let g:clipboard = {
+      \   'name': 'myClipboard',
+      \   'copy': {
+      \      '+': 'tmux load-buffer -',
+      \      '*': 'tmux load-buffer -',
+      \    },
+      \   'paste': {
+      \      '+': 'tmux save-buffer -',
+      \      '*': 'tmux save-buffer -',
+      \   },
+      \   'cache_enabled': 1,
+      \ }
+
 set noerrorbells
 set hidden
 
@@ -31,7 +54,6 @@ set encoding=utf-8
 set scrolloff=3
 set smartindent
 set termguicolors
-set cmdheight=2
 
 set noswapfile
 set nobackup
@@ -43,6 +65,7 @@ set wildmode=list:longest
 set number
 set rnu
 set path+=**
+set nohlsearch
 set incsearch
 set noshowmatch
 set smartcase
@@ -60,6 +83,10 @@ let g:netrw_browse_split=4
 let g:netrw_altv=1
 let g:netrw_list_hide=netrw_gitignore#Hide()
 let g:gitgutter_map_keys=0
+
+let g:coc_filetype_map = {
+  \ 'blade': 'html',
+  \ }
 
 set signcolumn=yes
 set updatetime=40
