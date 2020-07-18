@@ -8,21 +8,17 @@ Plug 'jwalton512/vim-blade'
 Plug 'mbbill/undotree'
 Plug 'gruvbox-community/gruvbox'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 Plug 'jremmen/vim-ripgrep'
-"Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
 call plug#end()
 
-colorscheme gruvbox
-set background=dark
-let g:gruvbox_contrast_dark = "hard"
-if exists('+termguicolors')
-    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-endif
-let g:gruvbox_invert_selection = '0'
+autocmd vimenter * colorscheme gruvbox
+autocmd vimenter * AirlineTheme gruvbox
 
-set guicursor=
+set background=dark
+let g:gruvbox_contrast_dark="hard"
+let g:gruvbox_invert_selection = '0'
 
 set colorcolumn=80
 
@@ -53,7 +49,14 @@ set expandtab
 set encoding=utf-8
 set scrolloff=3
 set smartindent
+
 set termguicolors
+if exists('+termguicolors')
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
+
+set mouse=a
 
 set noswapfile
 set nobackup
@@ -63,7 +66,6 @@ set undofile
 set wildmenu
 set wildmode=list:longest
 set number
-set rnu
 set path+=**
 set nohlsearch
 set incsearch
@@ -71,10 +73,6 @@ set noshowmatch
 set smartcase
 
 set nowrap
-"set linebreak
-"set breakindent
-"set breakindentopt=shift:2
-"set nolist
 
 let mapleader = " "
 
