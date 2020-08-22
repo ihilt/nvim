@@ -73,6 +73,7 @@ set noshowmatch
 set smartcase
 
 set nowrap
+set rnu
 
 let mapleader = " "
 
