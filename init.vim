@@ -11,6 +11,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 Plug 'jremmen/vim-ripgrep'
+Plug 'udalov/kotlin-vim'
+Plug 'igankevich/mesonic'
 call plug#end()
 
 autocmd vimenter * colorscheme gruvbox
@@ -80,7 +82,8 @@ let mapleader = " "
 let g:netrw_banner=0
 let g:netrw_browse_split=4
 let g:netrw_altv=1
-let g:netrw_list_hide=netrw_gitignore#Hide()
+"let g:netrw_list_hide=netrw_gitignore#Hide()
+let g:netrw_sort_sequence="[\/]$,*"
 let g:gitgutter_map_keys=0
 
 let g:coc_filetype_map = {
@@ -137,6 +140,10 @@ nmap <leader>cs <Plug>(coc-references)
 nmap <leader>cr <Plug>(coc-rename)
 nmap <leader>e <Plug>(coc-diagnostic-next)
 nmap <leader>y <Plug>(coc-diagnostic-prev)
+
+" Format
+xmap <leader>cf <Plug>(coc-format-selected)
+nmap <leader>cf <Plug>(coc-format-selected)
 
 function! s:check_back_space() abort
     let col = col('.') - 1
