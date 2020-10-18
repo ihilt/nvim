@@ -13,6 +13,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'jremmen/vim-ripgrep'
 Plug 'udalov/kotlin-vim'
 Plug 'igankevich/mesonic'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 call plug#end()
 
 autocmd vimenter * colorscheme gruvbox
@@ -28,18 +29,6 @@ filetype plugin indent on
 syntax on
 
 set clipboard+=unnamedplus
-let g:clipboard = {
-      \   'name': 'myClipboard',
-      \   'copy': {
-      \      '+': 'tmux load-buffer -',
-      \      '*': 'tmux load-buffer -',
-      \    },
-      \   'paste': {
-      \      '+': 'tmux save-buffer -',
-      \      '*': 'tmux save-buffer -',
-      \   },
-      \   'cache_enabled': 1,
-      \ }
 
 set noerrorbells
 set hidden
@@ -127,8 +116,6 @@ nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
 nnoremap <leader>m <C-W>_<C-W><bar>
-nnoremap <c-n> :bn<CR>
-nnoremap <c-p> :bp<CR>
 nmap <leader>ph <Plug>(GitGutterPreviewHunk)
 nmap <leader>] <Plug>(GitGutterNextHunk)
 nmap <leader>[ <Plug>(GitGutterPrevHunk)
