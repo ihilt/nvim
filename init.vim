@@ -116,6 +116,7 @@ nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
 nnoremap <leader>m <C-W>_<C-W><bar>
+nnoremap <leader>cS :CocSearch <C-R>=expand("<cword>")<CR><CR>
 nmap <leader>ph <Plug>(GitGutterPreviewHunk)
 nmap <leader>] <Plug>(GitGutterNextHunk)
 nmap <leader>[ <Plug>(GitGutterPrevHunk)
