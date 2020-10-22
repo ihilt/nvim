@@ -14,6 +14,7 @@ Plug 'jremmen/vim-ripgrep'
 Plug 'udalov/kotlin-vim'
 Plug 'igankevich/mesonic'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+Plug 'pangloss/vim-javascript'
 call plug#end()
 
 autocmd vimenter * colorscheme gruvbox
