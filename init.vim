@@ -13,12 +13,10 @@ Plug 'tpope/vim-fugitive'
 Plug 'jremmen/vim-ripgrep'
 Plug 'udalov/kotlin-vim'
 Plug 'igankevich/mesonic'
-Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'pangloss/vim-javascript'
 call plug#end()
 
-autocmd vimenter * colorscheme gruvbox
-autocmd vimenter * AirlineTheme gruvbox
+colorscheme gruvbox
 
 set background=dark
 let g:gruvbox_contrast_dark="hard"
@@ -72,7 +70,6 @@ let mapleader = " "
 let g:netrw_banner=0
 let g:netrw_browse_split=4
 let g:netrw_altv=1
-"let g:netrw_list_hide=netrw_gitignore#Hide()
 let g:netrw_sort_sequence="[\/]$,*"
 let g:gitgutter_map_keys=0
 
@@ -127,6 +124,7 @@ nmap <leader>ci <Plug>(coc-implementation)
 nmap <leader>ct <Plug>(coc-type-definition)
 nmap <leader>cs <Plug>(coc-references)
 nmap <leader>cr <Plug>(coc-rename)
+nmap <leader>cf <Plug>(coc-format-selected)
 nmap <leader>e <Plug>(coc-diagnostic-next)
 nmap <leader>y <Plug>(coc-diagnostic-prev)
 
