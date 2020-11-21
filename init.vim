@@ -24,6 +24,8 @@ set background=dark
 let g:gruvbox_contrast_dark="hard"
 let g:gruvbox_invert_selection = '0'
 
+let g:airline_powerline_fonts=1
+
 set colorcolumn=80
 
 filetype plugin indent on
@@ -34,10 +36,10 @@ set clipboard+=unnamedplus
 set noerrorbells
 set hidden
 
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set expandtab
+"set tabstop=4
+"set shiftwidth=4
+"set softtabstop=4
+"set expandtab
 set encoding=utf-8
 set scrolloff=3
 set smartindent
