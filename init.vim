@@ -26,6 +26,8 @@ set hidden
 
 set smartindent
 set autoindent
+set noexpandtab
+set shiftwidth=8
 
 set encoding=utf-8
 set scrolloff=3
@@ -89,7 +91,7 @@ nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>b :Buffers<CR>
-nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
+"nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
 nnoremap <leader>m <C-W>_<C-W><bar>
 nnoremap <leader>cS :CocSearch <C-R>=expand("<cword>")<CR><CR>
 nmap <leader>cd <Plug>(coc-definition)
