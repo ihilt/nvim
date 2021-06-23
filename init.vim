@@ -1,17 +1,16 @@
 call plug#begin('~/.config/nvim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'editorconfig/editorconfig-vim'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'jwalton512/vim-blade'
 Plug 'mbbill/undotree'
 Plug 'tpope/vim-fugitive'
-Plug 'jremmen/vim-ripgrep'
 Plug 'udalov/kotlin-vim'
 Plug 'igankevich/mesonic'
 Plug 'puremourning/vimspector'
-Plug 'szw/vim-maximizer'
 Plug 'pangloss/vim-javascript'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
 call plug#end()
 
 set colorcolumn=100
@@ -66,32 +65,35 @@ let g:coc_filetype_map = {
   \ 'blade': 'html',
   \ }
 
-set signcolumn=yes
+"set signcolumn=yes
 set updatetime=40
 
-if executable('rg')
-    let g:rg_derive_root='true'
-endif
+autocmd filetype c   nnoremap <F8> :exec '!clang-format -style=file -i '.shellescape('%')<CR>
+autocmd filetype cpp nnoremap <F8> :exec '!clang-format -style=file -i '.shellescape('%')<CR>
 
-function! RipgrepFzf(query, fullscreen)
-  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
-  let initial_command = printf(command_fmt, shellescape(a:query))
-  let reload_command = printf(command_fmt, '{q}')
-  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
-  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
-endfunction
+"if executable('rg')
+"    let g:rg_derive_root='true'
+"endif
 
-command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
+"function! RipgrepFzf(query, fullscreen)
+"  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
+"  let initial_command = printf(command_fmt, shellescape(a:query))
+"  let reload_command = printf(command_fmt, '{q}')
+"  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+"  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+"endfunction
 
-nnoremap <leader>f :Files<CR>
-nnoremap <leader>g :GFiles<CR>
-nnoremap <leader>r :RG<CR>
+"command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
+
+nnoremap <leader>f <cmd>Telescope find_files<cr>
+nnoremap <leader>g <cmd>Telescope git_files<cr>
+nnoremap <leader>r <cmd>Telescope live_grep<cr>
 nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>l :wincmd l<CR>
-nnoremap <leader>b :Buffers<CR>
-"nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
+nnoremap <leader>b <cmd>Telescope buffers sort_lastused=true<cr>
+nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
 nnoremap <leader>m <C-W>_<C-W><bar>
 nnoremap <leader>cS :CocSearch <C-R>=expand("<cword>")<CR><CR>
 nmap <leader>cd <Plug>(coc-definition)
@@ -105,7 +107,7 @@ nmap <leader>e <Plug>(coc-diagnostic-next)
 nmap <leader>y <Plug>(coc-diagnostic-prev)
 
 " Debugger remaps
-nnoremap <leader>m :MaximizerToggle!<CR>
+"nnoremap <leader>m :MaximizerToggle!<CR>
 nnoremap <leader>dd :call vimspector#Launch()<CR>
 nnoremap <leader>dc :call GotoWindow(g:vimspector_session_windows.code)<CR>
 nnoremap <leader>dt :call GotoWindow(g:vimspector_session_windows.tagpage)<CR>

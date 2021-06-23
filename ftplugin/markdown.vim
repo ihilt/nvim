@@ -4,7 +4,9 @@ endif
 
 let b:did_ftplugin = 1
 
-setlocal nornu
+setlocal expandtab
+setlocal shiftwidth=4
+setlocal tw=100
 setlocal wrap
 setlocal linebreak
 setlocal breakindent
